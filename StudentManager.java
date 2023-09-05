@@ -1,63 +1,93 @@
+import jdk.internal.icu.text.UnicodeSet;
+
+import javax.swing.*;
+import java.util.ArrayList;
+
+public class StudentManager {
+
+    private ArrayList<StudentInfo> StudentList;
+
+    private ArrayList<TeacherInfo> classList;
+
+    private ArrayList<StudentAddress> addressList;
 
 
-public class StudentInfo {
+    public StudentManager() {
+        classList = new ArrayList<>();
+        StudentList = new ArrayList<>();
+        addressList = new ArrayList<>();
+    }
 
-    private String StudentName;
-    private String School;
-    private String Grade;
-    private double Gpa;
-    private int ID;
+    public void addStudent(StudentInfo inputStudent) {
+        StudentList.add(inputStudent);
+    }
+    public void addTeacherInfo(TeacherInfo teacherInfo) {
+        classList.add(teacherInfo);
+    }
 
-
-    public StudentInfo(String StudentName, String School, String Grade, double Gpa, int ID) {
-        this.StudentName = StudentName;
-        this.School = School;
-        this.Grade = Grade;
-        this.Gpa = Gpa;
-        this.ID = ID;
+    public void addAddressInfo(StudentAddress inputAddress){
+        addressList.add(inputAddress);
     }
 
 
-    //getters
-    public String getStudentName() {
-        return StudentName;
+
+    public void displayStudentInfo(){
+        StringBuilder studentDisplay = new StringBuilder();
+        studentDisplay.append(String.format("%-20s %-20s %-15s %-10s %-4s\n",
+                "Name", "School","ID","Grade","GPA"));
+        for (StudentInfo FindStudent : StudentList) {
+            studentDisplay.append(String.format("%-17s %-22s %-10s %-11s %.1f\n",
+                    FindStudent.getStudentName(),
+                    FindStudent.getSchool(),
+                    FindStudent.getID(),
+                    FindStudent.getGrade(),
+                    FindStudent.getGpa()));
+        }
+        displayInScrollablePane(studentDisplay.toString(),"Student Info");
+    }
+    public void displayClassInfo() {
+        StringBuilder classDisplay = new StringBuilder();
+        classDisplay.append(String.format("%-20s %-20s %-10s %-10s %-10s\n",
+                "Class", "Teacher", "Period", "Time", "Grade"));
+
+        for (TeacherInfo findTeacher : classList) {
+            classDisplay.append(String.format("%-15s %-17s %-13s %-11s %-14s\n",
+                    findTeacher.getStudentClass(),
+                    findTeacher.getTeacher(),
+                    findTeacher.getPeriod(),
+                    findTeacher.getTime(),
+                    findTeacher.getGrade()));
+        }
+
+        displayInScrollablePane(classDisplay.toString(), "Class Info");
     }
 
-    public String getSchool() {
-        return School;
+    public void displayAddressInfo(){
+        StringBuilder addressDisplay = new StringBuilder();
+        addressDisplay.append(String.format("%-20s %-20s %-10s %-20s\n," +
+                "Home Address", "City", "State","Zip Code"));
+
+        for (StudentAddress findAddress: addressList){
+            addressDisplay.append(String.format("%-20s %-20s %-20s %-20s\n",
+                    findAddress.getAddress(),
+                    findAddress.getCity(),
+                    findAddress.getState(),
+                    findAddress.getZipcode()));
+        }
     }
 
-    public String getGrade() {
-        return Grade;
-    }
+    private void displayInScrollablePane(String text, String title){
+        JTextArea textArea = new JTextArea(20, 50);
+        textArea.setText(text);
+        textArea.setWrapStyleWord(true);
+        textArea.setLineWrap(true);
+        textArea.setCaretPosition(0);
+        textArea.setEditable(false);
 
-    public double getGpa() {
-        return Gpa;
-    }
-    public int getID(){
-        return ID;
-    }
-
-
-    //setters
-    public void setStudentName(String StudentName) {
-        this.StudentName = StudentName;
-    }
-
-    public void setSchool(String School) {
-        this.School = School;
-    }
-
-    public void setGpa(double Gpa) {
-        this.Gpa = Gpa;
-    }
-
-    public void setGrade(String Grade) {
-        this.Grade = Grade;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        JOptionPane.showMessageDialog(null, scrollPane, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
+
+
