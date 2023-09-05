@@ -1,52 +1,63 @@
-package StudentSelfProject;
+
 
 public class StudentInfo {
 
-    private String FirstName;
-    private String LastName;
+    private String StudentName;
     private String School;
-    private double Grade;
+    private String Grade;
     private double Gpa;
+    private int ID;
 
-    public StudentInfo(String FirstName, String LastName, String School, int Grade, double Gpa) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
+
+    public StudentInfo(String StudentName, String School, String Grade, double Gpa, int ID) {
+        this.StudentName = StudentName;
         this.School = School;
         this.Grade = Grade;
         this.Gpa = Gpa;
+        this.ID = ID;
     }
 
+
     //getters
-    public String getFirstName() {
-        return FirstName;
+    public String getStudentName() {
+        return StudentName;
     }
-    public String getLastName() {
-        return LastName;
-    }
+
     public String getSchool() {
         return School;
     }
-    public double getGrade() {
+
+    public String getGrade() {
         return Grade;
     }
+
     public double getGpa() {
         return Gpa;
     }
+    public int getID(){
+        return ID;
+    }
+
+
     //setters
-    public void setFirstName(String FirstName){
-        this.FirstName = FirstName;
+    public void setStudentName(String StudentName) {
+        this.StudentName = StudentName;
     }
-    public void setLastName(String LastName){
-        this.LastName = LastName;
-    }
-    public void setSchool(String School){
+
+    public void setSchool(String School) {
         this.School = School;
     }
 
     public void setGpa(double Gpa) {
         this.Gpa = Gpa;
     }
-    public void setGrade(int Grade){
+
+    public void setGrade(String Grade) {
         this.Grade = Grade;
     }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
 }
