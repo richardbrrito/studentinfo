@@ -1,51 +1,63 @@
-public class TeacherInfo {
-    private String className;
-    private String Period;
-    private String TeacherName;
-    private double Time;
 
+
+public class StudentInfo {
+
+    private String StudentName;
+    private String School;
     private String Grade;
+    private double Gpa;
+    private int ID;
 
-    public TeacherInfo(String className, String Period, String TeacherName, double Time, String Grade){
-        this.className = className;
-        this.Period = Period;
-        this.TeacherName = TeacherName;
-        this.Time = Time;
+
+    public StudentInfo(String StudentName, String School, String Grade, double Gpa, int ID) {
+        this.StudentName = StudentName;
+        this.School = School;
         this.Grade = Grade;
-    }
-    //getters
-    public String getStudentClass(){
-        return className;
-    }
-    public String getPeriod(){
-        return Period;
-    }
-    public String getTeacher(){
-        return TeacherName;
+        this.Gpa = Gpa;
+        this.ID = ID;
     }
 
-    public double getTime(){
-        return Time;
+
+    //getters
+    public String getStudentName() {
+        return StudentName;
     }
-    public String getGrade(){
+
+    public String getSchool() {
+        return School;
+    }
+
+    public String getGrade() {
         return Grade;
     }
-    //setters
-    public void setStudentClass(String Class){
-        this.className = Class;
+
+    public double getGpa() {
+        return Gpa;
     }
-    public void setPeriod(String Period){
-        this.Period = Period;
-    }
-    public void setTeacher(String TeacherName){
-        this.TeacherName = TeacherName;
+    public int getID(){
+        return ID;
     }
 
-    public void setTime(double Time){
-        this.Time = Time;
+
+    //setters
+    public void setStudentName(String StudentName) {
+        this.StudentName = StudentName;
     }
-    public void setGrade(String Grade){
+
+    public void setSchool(String School) {
+        this.School = School;
+    }
+
+    public void setGpa(double Gpa) {
+        this.Gpa = Gpa;
+    }
+
+    public void setGrade(String Grade) {
         this.Grade = Grade;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
 }
