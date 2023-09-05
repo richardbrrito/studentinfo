@@ -1,4 +1,4 @@
-package StudentSelfProject;
+
 
 public class StudentAddress {
 
@@ -28,4 +28,3 @@ public class StudentAddress {
 
 
 }
-
