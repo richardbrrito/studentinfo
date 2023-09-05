@@ -1,4 +1,3 @@
-package StudentSelfProject;
 import java.util.ArrayList; //arraylist import
 public class Database {
 
@@ -26,14 +25,14 @@ public class Database {
     public void search(String StudentName){ // method to perform search
         found = false; // false so that if found the if statement makes it true
         for (int i= 0; i < StudentList.size(); i++){ // for statement that runs throughout the whole student list
-            if(StudentList.get(i).getFirstName().equals(StudentName)){ // if studentlist size = first name run if statement
+            if(StudentList.get(i).getStudentName().equals(StudentName)){ // if studentlist size = first name run if statement
                 CurrentStudent = StudentList.get(i); // set currentStudent to the matching student
                 CurrentIndex = i; // set index in array to the one of the student
                 found = true; // true if student name is found
                 break; // break because if found it doesnt need to keep searching
             }
-            }
         }
+    }
     public void add(StudentInfo newStudent){
         StudentList.add(newStudent); // adds newStudent to arraylist StudentList
 
