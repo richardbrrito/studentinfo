@@ -19,7 +19,7 @@ public class StudentManagerDriver {
 
     private void mainMenu() {
         while (true) {
-            String[] options = {"Enter Student Info", "Enter Class Info", "Student Info", "Current Classes","Exit"};
+            String[] options = {"Enter Student Info", "Enter Class Info", "Student Info", "Current Classes","Student Address","Exit"};
             int choice = JOptionPane.showOptionDialog(null, "Select an action:",
                     "Student Manager", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 // each case is which button theyre pressing and what they do from left to right
@@ -28,15 +28,17 @@ public class StudentManagerDriver {
                     addStudent(studentManager);
                     break;
                 case 1:
-                    addClass();
+                    addClass(studentManager);
                     break;
                 case 2:
                     studentManager.displayStudentInfo();
                     break;
                 case 3:
-
+                    studentManager.displayClassInfo();
                     break;
                 case 4:
+                    studentManager.displayAddressInfo();
+                case 5:
                     System.exit(0);
                     break;
 
@@ -61,27 +63,17 @@ public class StudentManagerDriver {
         StudentAddress studentAddress = new StudentAddress(address, zip_code, city, state);
         StudentInfo studentInfo = new StudentInfo( StudentName, School, Grade, Gpa, ID);
         manager.addStudent(studentInfo);
-
-
+        manager.addAddressInfo(studentAddress);
     }
 
-    private void addClass(TeacherInfo info){
+    private static void addClass(StudentManager manager) {
+        String className = JOptionPane.showInputDialog("Enter class name:");
+        String period = JOptionPane.showInputDialog("Enter class period:");
+        String teacherName = JOptionPane.showInputDialog("Enter teacher's name:");
+        String classTime = JOptionPane.showInputDialog("Enter class time:");
+        String grade = JOptionPane.showInputDialog("Enter current grade:");
 
-        String className = JOptionPane.showInputDialog("Enter student's class name:");
-        String Period = JOptionPane.showInputDialog("Enter class' period:");
-        String TeacherName = JOptionPane.showInputDialog("Enter teacher's name:");
-        double Time = Double.parseDouble(JOptionPane.showInputDialog("Enter class time:"));
-        String Grade = JOptionPane.showInputDialog("Enter grade in class:");
-
-        TeacherInfo teacherInfo = new TeacherInfo(className, Period, TeacherName, Time, Grade);
-        teacherManager.addClass(teacherInfo);
-
-
-
-
-
-
-
-
+        TeacherInfo teacherInfo = new TeacherInfo(className, period, teacherName, classTime, grade);
+        manager.addTeacherInfo(teacherInfo);
     }
 }
